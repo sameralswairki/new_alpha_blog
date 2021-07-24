@@ -23,6 +23,8 @@ class ArticlesController < ApplicationController
     #render plain: params[:article]
     #we need below to white list what we are getting from the browser first: it is called strong parameter
     @article = Article.new(article_params)
+    #for enabling creating new articles befor adding user validation
+    @article.user = User.first
     #render plain: @article.inspect
     if @article.save
       #below flash message needs to be iterated in application.html.erb main file to be seen right after the creation of an article
